@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - MDdata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-white via-blue-50 to-blue-100 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="index.html" class="flex items-center py-4 space-x-3">
+                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8">
+                                    <path d="M6 54V10h10l16 21L48 10h10v44" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+                                    <path d="M16 54V26l16 19 16-19v28" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+                                    <rect x="18" y="36" width="6" height="18" rx="1" fill="currentColor"/>
+                                    <rect x="28" y="40" width="6" height="14" rx="1" fill="currentColor"/>
+                                    <rect x="38" y="34" width="6" height="20" rx="1" fill="currentColor"/>
+                                </svg>
+                            </span>
+                            <span class="font-semibold text-xl text-gray-900">MDdata</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="login.html" class="py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold transition duration-300">Login</a>
+                    <a href="register.html" class="py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition duration-300">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Form -->
+    <div class="min-h-[calc(100vh-72px)] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md w-full space-y-10 bg-white/80 backdrop-blur rounded-3xl shadow-xl border border-white/60 px-8 py-10">
+            <div>
+                <h2 class="text-center text-3xl font-extrabold text-gray-900">
+                    Create MDdata Account
+                </h2>
+                <p class="mt-2 text-center text-sm text-gray-600">
+                    Unlock institutional-level market data, API and quantitative research services
+                </p>
+            </div>
+            <form class="mt-8 space-y-6" id="registerForm">
+                <input type="hidden" name="remember" value="true">
+                <div class="space-y-4">
+                    <div>
+                        <label for="username" class="sr-only">Username</label>
+                        <input id="username" name="username" type="text" required class="appearance-none block w-full px-4 py-3 border border-gray-200 placeholder-gray-400 text-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white" placeholder="Username">
+                    </div>
+                    <div class="mt-4">
+                        <label for="email-address" class="sr-only">Email address</label>
+                        <input id="email-address" name="email" type="email" autocomplete="email" required class="appearance-none block w-full px-4 py-3 border border-gray-200 placeholder-gray-400 text-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white" placeholder="Email address">
+                    </div>
+                    <div class="mt-4">
+                        <label for="password" class="sr-only">Password</label>
+                        <input id="password" name="password" type="password" autocomplete="new-password" required class="appearance-none block w-full px-4 py-3 border border-gray-200 placeholder-gray-400 text-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white" placeholder="Password">
+                    </div>
+                    <div class="mt-4">
+                        <label for="inviteCode" class="sr-only">Invite Code</label>
+                        <input id="inviteCode" name="inviteCode" type="text" required class="appearance-none block w-full px-4 py-3 border border-gray-200 placeholder-gray-400 text-gray-900 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm bg-white" placeholder="Invite Code">
+                    </div>
+                </div>
+
+                <div class="flex items-center">
+                    <input id="terms" name="terms" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" required>
+                    <label for="terms" class="ml-2 block text-sm text-gray-600">
+                        I have read and agree to <a href="#" class="font-medium text-blue-600 hover:text-blue-500">Terms of Service</a>
+                    </label>
+                </div>
+
+                <div>
+                    <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                            <i class="fas fa-user-plus text-blue-200"></i>
+                        </span>
+                        Register
+                    </button>
+                </div>
+            </form>
+            <div class="text-center">
+                <p class="mt-2 text-sm text-gray-600">
+                    Already have an account?
+                    <a href="login.html" class="font-medium text-blue-600 hover:text-blue-500">
+                        Login Now
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Predefined valid invite codes
+        const validInviteCodes = ['INVITE123', 'WELCOME456', 'STOCK789'];
+
+        // Validate invite code
+        function validateInviteCode(code) {
+            return validInviteCodes.includes(code.toUpperCase());
+        }
+
+        // Form validation
+        function validateForm(formData) {
+            const errors = {};
+
+            // Username validation
+            if (!formData.username || formData.username.length < 3) {
+                errors.username = 'Username must be at least 3 characters';
+            }
+
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!formData.email || !emailRegex.test(formData.email)) {
+                errors.email = 'Please enter a valid email address';
+            }
+
+            // Password validation
+            if (!formData.password || formData.password.length < 6) {
+                errors.password = 'Password must be at least 6 characters';
+            }
+
+            // Invite code validation
+            if (!formData.inviteCode || !validateInviteCode(formData.inviteCode)) {
+                errors.inviteCode = 'Please enter a valid invite code';
+            }
+
+            return Object.keys(errors).length > 0 ? errors : null;
+        }
+
+        // Display errors
+        function displayErrors(errors) {
+            // Clear previous errors
+            document.querySelectorAll('.error-message').forEach(el => el.remove());
+            
+            // Display new errors
+            for (const [field, message] of Object.entries(errors)) {
+                const input = document.getElementById(field);
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'error-message text-red-500 text-sm mt-1';
+                errorDiv.textContent = message;
+                input.parentNode.appendChild(errorDiv);
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email-address').value,
+                password: document.getElementById('password').value,
+                inviteCode: document.getElementById('inviteCode').value
+            };
+            
+            // Validate form
+            const errors = validateForm(formData);
+            
+            if (errors) {
+                displayErrors(errors);
+                return;
+            }
+            
+            // If validation passes, simulate successful registration
+            alert('Registration successful! Welcome to MDdata.');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

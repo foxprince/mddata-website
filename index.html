@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDdata - Advanced Financial Data Solutions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap">
+    <style>
+        .brand-font {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            letter-spacing: 0.08em;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="index.html" class="flex items-center py-4 space-x-3">
+                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8">
+                                    <path d="M6 54V10h10l16 21L48 10h10v44" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+                                    <path d="M16 54V26l16 19 16-19v28" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+                                    <rect x="18" y="36" width="6" height="18" rx="1" fill="currentColor"/>
+                                    <rect x="28" y="40" width="6" height="14" rx="1" fill="currentColor"/>
+                                    <rect x="38" y="34" width="6" height="20" rx="1" fill="currentColor"/>
+                                </svg>
+                            </span>
+                            <span class="brand-font font-semibold text-xl text-gray-900">MDdata</span>
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="index.html" class="py-4 px-3 text-blue-600 border-b-2 border-blue-500 font-semibold">Home</a>
+                        <a href="#news" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">News</a>
+                        <a href="#research" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Research</a>
+                        <a href="#market-data" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Market Data</a>
+                        <a href="#quotes" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Quotes</a>
+                        <a href="#api-section" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">API</a>
+                        <a href="#pricing" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Pricing</a>
+                        <a href="docs.html" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Docs</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="login.html" class="py-2 px-4 text-gray-500 hover:text-gray-900 transition duration-300">Login</a>
+                    <a href="register.html" class="py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded transition duration-300">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-white via-blue-50 to-blue-100 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
+                    <span class="block">Advanced Financial Data Solutions</span>
+                    <span class="block text-blue-600 mt-2">Real-time Market Intelligence</span>
+                </h1>
+                <p class="mt-6 max-w-2xl mx-auto text-xl text-gray-600">
+                    Experience cutting-edge financial market data with our advanced analytics platform. Professional-grade solutions for quantitative research, trading desks, and fintech innovators.
+                </p>
+                <div class="mt-10 flex justify-center">
+                    <div class="rounded-md shadow">
+                        <a href="register.html" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10">
+                            Get Started
+                        </a>
+                    </div>
+                    <div class="ml-3 rounded-md shadow">
+                        <a href="#api-section" class="w-full flex items-center justify-center px-8 py-3 border border-blue-200 text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 md:py-4 md:text-lg md:px-10">
+                            Explore API
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Market Data Highlights -->
+    <div id="market-data" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
+                <div class="lg:col-span-2 space-y-8">
+                    <div>
+                        <span class="text-sm font-semibold uppercase tracking-wider text-blue-500">Market Snapshot</span>
+                        <h2 class="mt-3 text-3xl font-bold text-gray-900">Real-time Market Overview</h2>
+                        <p class="mt-4 text-lg text-gray-600">
+                            Leverage MDdata's low-latency market engine to track live moves across global equities, indices, and commodities.
+                            The dashboard highlights percentage change, turnover, and volume so quant and high-frequency teams can react instantly.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <div class="rounded-2xl border border-gray-100 bg-blue-50 px-4 py-5">
+                            <p class="text-sm font-medium text-blue-600">SSE Composite</p>
+                            <p class="mt-2 text-2xl font-semibold text-gray-900">3,124.87</p>
+                            <p class="mt-1 text-sm font-semibold text-green-600">+1.24% · Turnover $456.0B</p>
+                        </div>
+                        <div class="rounded-2xl border border-gray-100 bg-blue-50 px-4 py-5">
+                            <p class="text-sm font-medium text-blue-600">ChiNext Index</p>
+                            <p class="mt-2 text-2xl font-semibold text-gray-900">2,146.32</p>
+                            <p class="mt-1 text-sm font-semibold text-red-500">-0.56% · Turnover $321.0B</p>
+                        </div>
+                        <div class="rounded-2xl border border-gray-100 bg-blue-50 px-4 py-5">
+                            <p class="text-sm font-medium text-blue-600">Hang Seng Index</p>
+                            <p class="mt-2 text-2xl font-semibold text-gray-900">19,865.40</p>
+                            <p class="mt-1 text-sm font-semibold text-green-600">+0.78% · Turnover $589.0B</p>
+                        </div>
+                        <div class="rounded-2xl border border-gray-100 bg-blue-50 px-4 py-5">
+                            <p class="text-sm font-medium text-blue-600">COMEX Gold</p>
+                            <p class="mt-2 text-2xl font-semibold text-gray-900">2,361.75</p>
+                            <p class="mt-1 text-sm font-semibold text-green-600">+0.42% · Turnover $10.4B</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-blue-600 to-blue-500 rounded-3xl p-8 text-white shadow-xl">
+                    <div class="flex items-center justify-between">
+                        <p class="text-sm uppercase tracking-wider text-blue-100">Heatmap</p>
+                        <span class="inline-flex items-center text-xs font-semibold bg-white/20 px-3 py-1 rounded-full">Refresh Rate 500ms</span>
+                    </div>
+                    <h3 class="mt-6 text-2xl font-bold">Sector Performance Heatmap</h3>
+                    <p class="mt-3 text-blue-100 text-sm">Top movers across major sectors</p>
+                    <div class="mt-6 grid grid-cols-3 gap-2">
+                        <div class="rounded-xl bg-white/15 px-3 py-4">
+                            <p class="text-sm font-medium">New Energy</p>
+                            <p class="mt-1 text-lg font-semibold text-green-200">+2.83%</p>
+                            <p class="text-xs text-blue-100">Turnover $86B</p>
+                        </div>
+                        <div class="rounded-xl bg-white/15 px-3 py-4">
+                            <p class="text-sm font-medium">Semiconductors</p>
+                            <p class="mt-1 text-lg font-semibold text-green-200">+1.67%</p>
+                            <p class="text-xs text-blue-100">Turnover $64B</p>
+                        </div>
+                        <div class="rounded-xl bg-white/15 px-3 py-4">
+                            <p class="text-sm font-medium">Healthcare</p>
+                            <p class="mt-1 text-lg font-semibold text-red-200">-0.92%</p>
+                            <p class="text-xs text-blue-100">Turnover $43B</p>
+                        </div>
+                        <div class="rounded-xl bg-white/15 px-3 py-4">
+                            <p class="text-sm font-medium">Consumer</p>
+                            <p class="mt-1 text-lg font-semibold text-green-200">+0.54%</p>
+                            <p class="text-xs text-blue-100">Turnover $51B</p>
+                        </div>
+                        <div class="rounded-xl bg-white/15 px-3 py-4">
+                            <p class="text-sm font-medium">Banks</p>
+                            <p class="mt-1 text-lg font-semibold text-red-200">-0.31%</p>
+                            <p class="text-xs text-blue-100">Turnover $37B</p>
+                        </div>
+                        <div class="rounded-xl bg-white/15 px-3 py-4">
+                            <p class="text-sm font-medium">Defense</p>
+                            <p class="mt-1 text-lg font-semibold text-green-200">+1.12%</p>
+                            <p class="text-xs text-blue-100">Turnover $28B</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 rounded-2xl bg-white/10 p-4 text-sm text-blue-50">
+                        Real-time factor signals: high-volatility sectors provide 5-minute momentum alerts that pipe directly into proprietary quant systems.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Live Quotes Section -->
+    <div id="quotes" class="py-16 bg-blue-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10">
+                <div class="lg:w-1/3 space-y-4">
+                    <span class="text-sm font-semibold uppercase tracking-wider text-blue-200">Smart Quotes</span>
+                    <h2 class="text-3xl font-bold">Global Smart Quotes Hub</h2>
+                    <p class="text-blue-100 text-base leading-relaxed">
+                        Powered by 12 direct exchange connections worldwide, the MDdata quoting center delivers millisecond-level bids, trades, and depth snapshots.
+                        REST, WebSocket, and FIX channels keep every terminal in sync in real time.
+                    </p>
+                    <div class="flex items-center space-x-4">
+                        <div>
+                            <p class="text-3xl font-semibold">98µs</p>
+                            <p class="text-xs uppercase tracking-wide text-blue-200">Avg Latency</p>
+                        </div>
+                        <div class="h-12 w-px bg-white/20"></div>
+                        <div>
+                            <p class="text-3xl font-semibold">1.2B+</p>
+                            <p class="text-xs uppercase tracking-wide text-blue-200">Daily Messages</p>
+                        </div>
+                    </div>
+                    <a href="#api-section" class="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-900 font-semibold rounded-full shadow-sm hover:bg-blue-100 transition">
+                        Connect to Real-time Quotes API
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="lg:w-2/3">
+                    <div class="overflow-hidden rounded-3xl bg-white text-gray-900 shadow-2xl">
+                        <div class="flex items-center justify-between px-6 py-4 bg-blue-50 border-b border-blue-100">
+                            <h3 class="text-lg font-semibold text-blue-900">Level-2 Depth Quotes</h3>
+                            <span class="text-sm font-medium text-blue-500">Refresh Rate: 200ms</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-blue-100">
+                            <div class="p-6">
+                                <p class="text-sm font-semibold text-blue-500">Mainland China A-Shares</p>
+                                <div class="mt-4 space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-base font-medium">CATL</p>
+                                        <div class="text-right">
+                                            <p class="text-lg font-semibold text-gray-900">$197.46</p>
+                                            <p class="text-sm font-semibold text-green-600">+2.14% · Bid $197.40</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-base font-medium">Kweichow Moutai</p>
+                                        <div class="text-right">
+                                            <p class="text-lg font-semibold text-gray-900">$1,682.00</p>
+                                            <p class="text-sm font-semibold text-red-500">-0.37% · Ask $1,682.20</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-base font-medium">iFLYTEK</p>
+                                        <div class="text-right">
+                                            <p class="text-lg font-semibold text-gray-900">$69.13</p>
+                                            <p class="text-sm font-semibold text-green-600">+3.86% · Bid $69.10</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <p class="text-sm font-semibold text-blue-500">Global Macro Assets</p>
+                                <div class="mt-4 space-y-3">
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-base font-medium">S&P 500 Index</p>
+                                        <div class="text-right">
+                                            <p class="text-lg font-semibold text-gray-900">4,492.78</p>
+                                            <p class="text-sm font-semibold text-green-600">+0.63% · USD Quote</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-base font-medium">EUR/USD</p>
+                                        <div class="text-right">
+                                            <p class="text-lg font-semibold text-gray-900">1.0763</p>
+                                            <p class="text-sm font-semibold text-green-600">+0.18% · Spread 0.8</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center justify-between">
+                                        <p class="text-base font-medium">BTC/USDT</p>
+                                        <div class="text-right">
+                                            <p class="text-lg font-semibold text-gray-900">62,845.50</p>
+                                            <p class="text-sm font-semibold text-red-500">-1.24% · Depth 450 coins</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 bg-blue-50 text-sm text-blue-600 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+                            <span>Streaming includes tick-by-tick trades, 20-level order books, abnormal volatility alerts.</span>
+                            <span>Gap recovery keeps the last 2 hours of data available after reconnect.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="py-16 bg-blue-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center">
+                <h2 class="text-sm font-semibold tracking-wider text-blue-600 uppercase">Core Capabilities</h2>
+                <p class="mt-3 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Why MDdata?
+                </p>
+                <p class="mt-4 max-w-2xl text-lg text-gray-600 lg:mx-auto">
+                    We deliver verifiable data infrastructure for hedge funds, brokerages, and fintech teams through a unified data lake, event-driven streaming, and scalable APIs.
+                </p>
+            </div>
+
+            <div class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                <div class="rounded-3xl bg-white p-8 shadow-sm border border-blue-100">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="mt-6 text-xl font-semibold text-gray-900">Millisecond Streaming</h3>
+                    <p class="mt-3 text-sm leading-6 text-gray-600">
+                        Kafka + ClickHouse stack ingests 500k ticks per second and pushes low-latency feeds via WebSocket and FIX gateways.
+                    </p>
+                </div>
+                <div class="rounded-3xl bg-white p-8 shadow-sm border border-blue-100">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="mt-6 text-xl font-semibold text-gray-900">Unified Data Lake</h3>
+                    <p class="mt-3 text-sm leading-6 text-gray-600">
+                        Historical data with second-level retrieval covering equities, futures, FX, digital assets, and alternative datasets.
+                    </p>
+                </div>
+                <div class="rounded-3xl bg-white p-8 shadow-sm border border-blue-100">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="mt-6 text-xl font-semibold text-gray-900">Enterprise Security</h3>
+                    <p class="mt-3 text-sm leading-6 text-gray-600">
+                        MFA, IP whitelisting, and granular token scopes to satisfy institutional compliance requirements.
+                    </p>
+                </div>
+                <div class="rounded-3xl bg-white p-8 shadow-sm border border-blue-100">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3 class="mt-6 text-xl font-semibold text-gray-900">Rapid Onboarding</h3>
+                    <p class="mt-3 text-sm leading-6 text-gray-600">
+                        SDKs, Postman collections, and Terraform modules cut integration time to under 30 minutes.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- API Section -->
+    <div id="api-section" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-sm font-semibold tracking-wider text-blue-600 uppercase">Developer Ready</span>
+                    <h2 class="mt-3 text-3xl font-extrabold text-gray-900">MDdata Real-time Market API</h2>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Access global equities, futures, FX, and digital assets through unified REST and WebSocket endpoints.
+                        Rate limits, signed authentication, and tiered permissions keep institutional workflows secure.
+                    </p>
+                    <div class="mt-6 space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600"><i class="fas fa-bolt"></i></span>
+                            <p class="text-sm text-gray-600">Average response &lt; 120ms with a 99.9% availability SLA.</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600"><i class="fas ෰
+fa-lock"></i></span>
+                            <p class="text-sm text-gray-600">HMAC-SHA256 Authentication, Fine-grained Token Authorization</p>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600"><i class="fas fa-code"></i></span>
+                            <p class="text-sm text-gray-600">Multi-language SDKs: Python, TypeScript, Go, Java</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <a href="login.html" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-full shadow-sm hover:bg-blue-700">
+                            Request Sandbox Key
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="docs.html" class="inline-flex items-center px-6 py-3 border border-blue-200 text-blue-600 font-semibold rounded-full hover:bg-blue-50">
+                            View Documentation
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <div class="rounded-3xl bg-gray-900 text-gray-100 p-8 shadow-xl">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-semibold">Example: Fetch Latest Quote</h3>
+                            <span class="text-xs uppercase tracking-widest text-blue-300">REST & WebSocket</span>
+                        </div>
+                        <div class="mt-6 grid grid-cols-1 gap-6">
+                            <div>
+                                <p class="text-sm font-medium text-blue-300 mb-2">JavaScript</p>
+                                <pre class="bg-gray-800 rounded-2xl p-4 text-sm overflow-x-auto">
+<code>import WebSocket from 'ws';
+
+const symbol = 'SZSE:300750';
+const ws = new WebSocket('wss://stream.mddata.cc/v1/quotes', {
+  headers: { Authorization: `Bearer ${process.env.MDDATA_TOKEN}` }
+});
+
+ws.on('open', () => {
+  ws.send(JSON.stringify({ action: 'subscribe', channel: 'quotes', symbol }));
+});
+
+ws.on('message', (msg) => {
+  const data = JSON.parse(msg);
+  console.log(`[${data.symbol}] bid ${data.bidPrice} ask ${data.askPrice}`);
+});</code></pre>
+                            </div>
+                            <div>
+                                <p class="text-sm font-medium text-blue-300 mb-2">Python</p>
+                                <pre class="bg-gray-800 rounded-2xl p-4 text-sm overflow-x-auto">
+<code>import requests
+
+API_KEY = 'your-api-key'
+symbol = 'AAPL'
+
+resp = requests.get(
+    f'https://api.mddata.cc/v1/stock/quote/{symbol}',
+    headers={'Authorization': f'Bearer {API_KEY}'}
+)
+resp.raise_for_status()
+payload = resp.json()
+print(payload['price'], payload['turnover'])</code></pre>
+                            </div>
+                        </div>
+                        <p class="mt-6 text-sm text-blue-200">More examples: streaming pushes, historical candles, after-hours data, and tick-by-tick trades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- News Section -->
+    <div id="news" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-sm font-semibold tracking-wider text-blue-600 uppercase">Financial News</h2>
+                <p class="mt-3 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Latest Market Insights
+                </p>
+                <p class="mt-4 max-w-2xl text-lg text-gray-600 lg:mx-auto">
+                    Get global market focus news and in-depth analysis, capturing key events and policy changes that affect the market.
+                </p>
+            </div>
+
+            <div class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="rounded-3xl border border-gray-100 bg-blue-50/60 overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
+                    <div class="p-6">
+                        <div class="text-blue-600 text-sm font-semibold">Market Analysis</div>
+                        <h3 class="text-xl font-bold text-gray-900 mt-2">Global Stock Market Volatility Increases: How Should Investors Respond?</h3>
+                        <p class="text-gray-600 mt-3">
+                            Recent global stock market volatility has increased significantly. This article analyzes the main factors causing market turbulence and provides strategic recommendations for investors.
+                        </p>
+                        <div class="mt-4 flex items-center">
+                            <span class="text-gray-400 text-sm">October 15, 2024</span>
+                            <a href="#" class="ml-auto text-blue-600 hover:text-blue-500 text-sm font-semibold">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-3xl border border-gray-100 bg-blue-50/60 overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
+                    <div class="p-6">
+                        <div class="text-blue-600 text-sm font-semibold">Industry Updates</div>
+                        <h3 class="text-xl font-bold text-gray-900 mt-2">Tech Earnings Season Arrives: Which Companies Are Worth Watching?</h3>
+                        <p class="text-gray-600 mt-3">
+                            As tech giants release their quarterly earnings, market focus centers on performance growth and future outlook. This article highlights key companies worth watching.
+                        </p>
+                        <div class="mt-4 flex items-center">
+                            <span class="text-gray-400 text-sm">October 12, 2024</span>
+                            <a href="#" class="ml-auto text-blue-600 hover:text-blue-500 text-sm font-semibold">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rounded-3xl border border-gray-100 bg-blue-50/60 overflow-hidden shadow-sm hover:shadow-xl transition duration-300">
+                    <div class="p-6">
+                        <div class="text-blue-600 text-sm font-semibold">Policy Analysis</div>
+                        <h3 class="text-xl font-bold text-gray-900 mt-2">Central Bank's Latest Monetary Policy Impact on Stock Market</h3>
+                        <p class="text-gray-600 mt-3">
+                            The central bank's recent monetary policy adjustments have attracted widespread market attention. This article provides in-depth analysis of policy content and its potential impact on different industry sectors.
+                        </p>
+                        <div class="mt-4 flex items-center">
+                            <span class="text-gray-400 text-sm">October 10, 2024</span>
+                            <a href="#" class="ml-auto text-blue-600 hover:text-blue-500 text-sm font-semibold">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Research Section -->
+    <div id="research" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-sm font-semibold tracking-wider text-blue-600 uppercase">Research</h2>
+                <p class="mt-3 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                    Research & Strategy Insights
+                </p>
+                <p class="mt-4 max-w-2xl text-lg text-gray-600 lg:mx-auto">
+                    In-depth research reports written by senior quantitative teams, combining data science, machine learning and macro research to provide reliable basis for investment decisions.
+                </p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="rounded-3xl bg-blue-50 p-8 border border-blue-100 shadow-sm">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Industry Rotation Scoring Model</h3>
+                            <p class="text-sm text-gray-600">Multi-dimensional Prosperity Index + Valuation Factor</p>
+                        </div>
+                    </div>
+                    <p class="mt-5 text-gray-700">
+                        Comprehensively utilizing capital flow, prosperity and risk premium indicators to dynamically construct industry long-short portfolio structures, providing monthly allocation recommendations and drawdown control strategies.
+                    </p>
+                    <div class="mt-6">
+                        <a href="login.html" class="inline-flex items-center text-blue-600 font-medium hover:text-blue-500">
+                            Download Report <i class="fas fa-download ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="rounded-3xl bg-blue-50 p-8 border border-blue-100 shadow-sm">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Multi-factor Stock Selection Framework</h3>
+                            <p class="text-sm text-gray-600">Value + Growth + Quality + Momentum</p>
+                        </div>
+                    </div>
+                    <p class="mt-5 text-gray-700">
+                        Using 15 years of historical data to complete factor mining, scoring, portfolio construction and risk control verification, providing ready-to-use quantitative stock pools.
+                    </p>
+                    <div class="mt-6">
+                        <a href="login.html" class="inline-flex items-center text-blue-600 font-medium hover:text-blue-500">
+                            Download Report <i class="fas fa-download ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="rounded-3xl bg-blue-50 p-8 border border-blue-100 shadow-sm">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Risk Parity Asset Allocation</h3>
+                            <p class="text-sm text-gray-600">Multi-asset Optimization + CVaR Control</p>
+                        </div>
+                    </div>
+                    <p class="mt-5 text-gray-700">
+                        Through risk contribution balancing and volatility prediction models, achieve robust allocation of cross-market asset portfolios with real-time rebalancing signal API.
+                    </p>
+                    <div class="mt-6">
+                        <a href="login.html" class="inline-flex items-center text-blue-600 font-medium hover:text-blue-500">
+                            Download Report <i class="fas fa-download ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="rounded-3xl bg-blue-50 p-8 border border-blue-100 shadow-sm">
+                    <div class="flex items-center space-x-4">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+                            <i class="fas fa-vial"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900">Factor Effectiveness Backtesting</h3>
+                            <p class="text-sm text-gray-600">A-Share Factor Persistence Research</p>
+                        </div>
+                    </div>
+                    <p class="mt-5 text-gray-700">
+                        Conduct rolling backtests on mainstream style factors, showing significance and correlation evolution across different market periods.
+                    </p>
+                    <div class="mt-6">
+                        <a href="login.html" class="inline-flex items-center text-blue-600 font-medium hover:text-blue-500">
+                            Download Report <i class="fas fa-download ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="login.html" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-semibold rounded-full text-white bg-blue-600 hover:bg-blue-700">
+                    Browse Complete Research Library
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pricing Section -->
+    <div id="pricing" class="py-16 bg-blue-950 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto">
+                <span class="text-sm font-semibold tracking-wider uppercase text-blue-200">Subscription</span>
+                <h2 class="mt-3 text-3xl font-extrabold">Subscription Plans</h2>
+                <p class="mt-4 text-blue-100 text-base">
+                    Choose the right market data service according to different business scales. All plans provide SLA guarantee and 7x24 dedicated support.
+                </p>
+            </div>
+            <div class="mt-12 grid gap-8 lg:grid-cols-3">
+                <div class="rounded-3xl bg-blue-900 border border-blue-700 p-8 shadow-xl">
+                    <p class="text-sm font-semibold text-blue-300">Starter</p>
+                    <h3 class="mt-4 text-3xl font-bold">$1,999<span class="text-base font-medium text-blue-200">  /month</span></h3>
+                    <p class="mt-3 text-blue-100 text-sm">
+                        Suitable for small quantitative teams and rapid validation of innovative applications.
+                    </p>
+                    <ul class="mt-6 space-y-3 text-sm text-blue-100">
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-300"></i><span>Real-time Level-1 Market Data (Shanghai/Shenzhen/Hong Kong/US Stocks)</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-300"></i><span>Daily historical data backtracking for three years</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-300"></i><span>REST + WebSocket Interface</span></li>
+                    </ul>
+                    <a href="login.html" class="mt-8 inline-flex w-full justify-center rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-white/20 transition">Start Trial</a>
+                </div>
+                <div class="rounded-3xl bg-white text-blue-900 p-10 shadow-2xl border border-blue-200 relative overflow-hidden">
+                    <span class="absolute top-6 right-6 rounded-full bg-blue-100 text-blue-700 px-3 py-1 text-xs font-semibold">Most Popular</span>
+                    <p class="text-sm font-semibold text-blue-600">Professional</p>
+                    <h3 class="mt-4 text-3xl font-bold">$5,999<span class="text-base font-medium text-blue-500">  /month</span></h3>
+                    <p class="mt-3 text-sm text-blue-700">
+                        Meet the full needs of institutional quantitative, asset management, and brokerage teams.
+                    </p>
+                    <ul class="mt-6 space-y-3 text-sm text-blue-700">
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-500"></i><span>Level-2 Depth Market Data + Tick-by-tick Transactions</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-500"></i><span>Tick data and minute-level historical backtracking for 10 years</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-500"></i><span>Dedicated Channel + 200ms SLA</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-500"></i><span>API Limit 10,000 requests/min</span></li>
+                    </ul>
+                    <a href="login.html" class="mt-8 inline-flex w-full justify-center rounded-full bg-blue-600 px-4 py-3 text-sm font-semibold text-white hover:bg-blue-700 transition">Schedule Demo</a>
+                </div>
+                <div class="rounded-3xl bg-blue-900 border border-blue-700 p-8 shadow-xl">
+                    <p class="text-sm font-semibold text-blue-300">Enterprise</p>
+                    <h3 class="mt-4 text-3xl font-bold">Custom Solutions</h3>
+                    <p class="mt-3 text-blue-100 text-sm">
+                        Specially designed for exchanges, brokerage proprietary trading and internet financial platforms.
+                    </p>
+                    <ul class="mt-6 space-y-3 text-sm text-blue-100">
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-300"></i><span>Global exchange direct connection + disaster recovery cluster</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-300"></i><span>Custom data cleaning and risk control indicators</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-300"></i><span>Dedicated technical consultant and on-site support</span></li>
+                        <li class="flex items-center space-x-3"><i class="fas fa-check text-blue-300"></i><span>Compliance audit and private deployment</span></li>
+                    </ul>
+                    <a href="login.html" class="mt-8 inline-flex w-full justify-center rounded-full bg-white/10 px-4 py-2 text-sm font-semibold text-white hover:bg-white/20 transition">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="col-span-1">
+                    <h3 class="text-white text-lg font-semibold mb-4">MDdata</h3>
+                    <p class="text-gray-400">
+                        A professional financial data platform providing advanced analytics and real-time market intelligence for institutional and retail clients.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#news" class="text-gray-400 hover:text-white">News</a></li>
+                        <li><a href="#research" class="text-gray-400 hover:text-white">Research</a></li>
+                        <li><a href="#api-section" class="text-gray-400 hover:text-white">API</a></li>
+                        <li><a href="docs.html" class="text-gray-400 hover:text-white">Documentation</a></li>
+                        <li><a href="docs.html#quick-start" class="text-gray-400 hover:text-white">Tutorials</a></li>
+                        <li><a href="#news" class="text-gray-400 hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div id="legal">
+                    <h3 class="text-white text-lg font-semibold mb-4">Legal</h3>
+                    <div class="space-y-5 text-sm text-gray-400">
+                        <div>
+                            <a href="privacy-policy.html" rel="noopener noreferrer" class="text-base font-semibold text-white hover:text-blue-300">Privacy Policy</a>
+                            <p class="mt-2 leading-6">We collect and process market usage analytics solely for service delivery, encrypting data at rest and allowing clients to request deletion at any time.</p>
+                        </div>
+                        <div>
+                            <a href="terms-of-service.html"  rel="noopener noreferrer" class="text-base font-semibold text-white hover:text-blue-300">Terms of Service</a>
+                            <p class="mt-2 leading-6">Access to MDdata APIs requires a valid subscription. Users must comply with exchange redistribution rules and protect authentication credentials.</p>
+                        </div>
+                        <div>
+                            <a href="disclaimer.html" rel="noopener noreferrer" class="text-base font-semibold text-white hover:text-blue-300">Disclaimer</a>
+                            <p class="mt-2 leading-6">Market information is provided on a best-effort basis without investment advice. MDdata is not responsible for trading losses arising from data delays or outages.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8">
+                <p class="text-base text-gray-400">
+                    @2025 MDdata Technology Co.,Ltd All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data-simulation.js"></script>
+    <script src="js/ui-update.js"></script>
+    <script>
+        // Initialize the simulation when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeSimulation();
+        });
+    </script>
+</body>
+</html>

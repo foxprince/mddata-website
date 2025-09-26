@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Detail - MDdata</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-white via-blue-50 to-blue-100 text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="index.html" class="flex items-center py-4 space-x-3">
+                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-7 w-7">
+                                    <path d="M10 50V14h8l14 18 14-18h8v36h-8V28L32 46 18 28v22z" fill="currentColor"/>
+                                    <rect x="16" y="34" width="4" height="12" rx="1" fill="currentColor"/>
+                                    <rect x="26" y="38" width="4" height="8" rx="1" fill="currentColor"/>
+                                    <rect x="36" y="34" width="4" height="12" rx="1" fill="currentColor"/>
+                                    <rect x="46" y="30" width="4" height="16" rx="1" fill="currentColor"/>
+                                </svg>
+                            </span>
+                            <span class="font-semibold text-xl text-gray-900">MDdata</span>
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="index.html" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Home</a>
+                        <a href="#" class="py-4 px-3 text-blue-600 border-b-2 border-blue-500 font-semibold">Markets</a>
+                        <a href="index.html#news" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">News</a>
+                        <a href="index.html#research" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Research</a>
+                        <a href="index.html#api-section" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">API</a>
+                        <a href="docs.html" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Docs</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="login.html" class="py-2 px-4 text-blue-600 hover:text-blue-700 font-semibold transition duration-300">Login</a>
+                    <a href="register.html" class="py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-full transition duration-300">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Breadcrumb -->
+        <nav class="flex mb-6" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3 text-sm">
+                <li class="inline-flex items-center">
+                    <a href="index.html" class="inline-flex items-center font-medium text-blue-600 hover:text-blue-500">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                        <a href="#" class="ml-1 font-medium text-blue-600 hover:text-blue-500 md:ml-2">Markets</a>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                        <span class="ml-1 font-medium text-gray-500 md:ml-2">AAPL</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
+
+        <!-- Stock Header -->
+        <div class="rounded-3xl bg-white shadow-lg p-6 mb-6 border border-blue-100">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div class="flex items-center space-x-3">
+                    <span class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-600 font-semibold">AP</span>
+                    <div>
+                        <h1 class="text-2xl font-bold text-gray-900">Apple Inc. (AAPL)</h1>
+                        <p class="text-sm text-gray-500">NASDAQ · Information Technology</p>
+                    </div>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:items-end sm:space-x-4 space-y-3 sm:space-y-0">
+                    <div>
+                        <div class="text-4xl font-bold text-gray-900">$172.35</div>
+                        <div class="text-sm font-semibold text-green-600">
+                            <i class="fas fa-caret-up"></i> +1.25 (0.73%)
+                        </div>
+                    </div>
+                    <div class="px-4 py-2 rounded-2xl bg-blue-50 text-blue-600 text-sm font-medium">
+                        MDdata Real-time Market Data · 200ms SLA
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart Section -->
+        <div class="rounded-3xl bg-white shadow-lg p-6 mb-6 border border-blue-100">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
+                <h2 class="text-xl font-bold text-gray-900">Price Trend</h2>
+                <div class="flex space-x-2">
+                    <button class="px-3 py-1 text-sm rounded-full border border-blue-100 text-blue-600 hover:bg-blue-50">1D</button>
+                    <button class="px-3 py-1 text-sm rounded-full bg-blue-600 text-white">1W</button>
+                    <button class="px-3 py-1 text-sm rounded-full border border-blue-100 text-blue-600 hover:bg-blue-50">1M</button>
+                    <button class="px-3 py-1 text-sm rounded-full border border-blue-100 text-blue-600 hover:bg-blue-50">3M</button>
+                    <button class="px-3 py-1 text-sm rounded-full border border-blue-100 text-blue-600 hover:bg-blue-50">1Y</button>
+                </div>
+            </div>
+            <div class="h-96">
+                <canvas id="priceChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Key Statistics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="rounded-3xl bg-white shadow-lg p-6 border border-blue-100">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Key Metrics</h2>
+                <div class="space-y-3 text-sm text-gray-600">
+                    <div class="flex justify-between">
+                        <span>Previous Close</span>
+                        <span class="font-semibold text-gray-900">$171.10</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Open</span>
+                        <span class="font-semibold text-gray-900">$171.50</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Day's Range</span>
+                        <span class="font-semibold text-gray-900">$170.80 - $172.90</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>52 Week Range</span>
+                        <span class="font-semibold text-gray-900">$124.17 - $198.23</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Volume</span>
+                        <span class="font-semibold text-gray-900">45,238,124</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Avg. Volume</span>
+                        <span class="font-semibold text-gray-900">52,889,456</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rounded-3xl bg-white shadow-lg p-6 border border-blue-100">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Company Overview</h2>
+                <div class="space-y-3 text-sm text-gray-600">
+                    <div class="flex justify-between">
+                        <span>Market Cap</span>
+                        <span class="font-semibold text-gray-900">$2.71T</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>P/E Ratio</span>
+                        <span class="font-semibold text-gray-900">29.85</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>EPS</span>
+                        <span class="font-semibold text-gray-900">5.78</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>Dividend Yield</span>
+                        <span class="font-semibold text-gray-900">0.54%</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>52 Week High</span>
+                        <span class="font-semibold text-gray-900">$198.23</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span>52 Week Low</span>
+                        <span class="font-semibold text-gray-900">$124.17</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent News -->
+        <div class="rounded-3xl bg-white shadow-lg p-6 border border-blue-100">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">Latest News</h2>
+            <div class="space-y-4">
+                <div class="border-b border-blue-100 pb-4">
+                    <h3 class="font-semibold text-gray-900 hover:text-blue-600 cursor-pointer">Apple Announces New iPhone 15 Features</h3>
+                    <p class="text-gray-600 text-sm mt-1">Apple revealed new camera technology and processor improvements for the upcoming iPhone 15 series...</p>
+                    <div class="text-gray-400 text-xs mt-2">2 hours ago</div>
+                </div>
+                <div class="border-b border-blue-100 pb-4">
+                    <h3 class="font-semibold text-gray-900 hover:text-blue-600 cursor-pointer">Apple Stock Reaches All-Time High</h3>
+                    <p class="text-gray-600 text-sm mt-1">Shares of Apple Inc. hit a new record high today as investor confidence remains strong...</p>
+                    <div class="text-gray-400 text-xs mt-2">1 day ago</div>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-900 hover:text-blue-600 cursor-pointer">Analysts Raise Apple Price Targets</h3>
+                    <p class="text-gray-600 text-sm mt-1">Several Wall Street analysts have increased their price targets for Apple stock following strong quarterly results...</p>
+                    <div class="text-gray-400 text-xs mt-2">2 days ago</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-blue-950 text-white">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1">
+                    <h3 class="text-white text-lg font-semibold mb-4">MDdata</h3>
+                    <p class="text-blue-200">
+                        A professional financial data platform providing advanced analytics and real-time market intelligence for institutional and retail clients.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Products</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#market-data" class="text-blue-200 hover:text-white">Market Data</a></li>
+                        <li><a href="index.html#quotes" class="text-blue-200 hover:text-white">Quotes</a></li>
+                        <li><a href="index.html#api-section" class="text-blue-200 hover:text-white">API</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="docs.html" class="text-blue-200 hover:text-white">Documentation</a></li>
+                        <li><a href="index.html#news" class="text-blue-200 hover:text-white">News</a></li>
+                        <li><a href="index.html#research" class="text-blue-200 hover:text-white">Research</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-semibold mb-4">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-blue-200 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white">Terms of Service</a></li>
+                        <li><a href="#" class="text-blue-200 hover:text-white">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-blue-800 pt-8 md:flex md:items-center md:justify-between">
+                <div class="flex space-x-6 md:order-2">
+                    <a href="#" class="text-blue-200 hover:text-white">
+                        <span class="sr-only">Facebook</span>
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-blue-200 hover:text-white">
+                        <span class="sr-only">Twitter</span>
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-blue-200 hover:text-white">
+                        <span class="sr-only">GitHub</span>
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <p class="mt-8 text-base text-blue-200 md:mt-0 md:order-1">
+                    &copy; 2024 MDdata. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data-simulation.js"></script>
+    <script>
+        // Create price chart
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('priceChart').getContext('2d');
+            
+            // Generate sample data for the chart
+            const labels = [];
+            const data = [];
+            let currentValue = 170;
+            
+            for (let i = 0; i < 30; i++) {
+                labels.push(`Day ${i+1}`);
+                // Simulate price movements
+                const change = (Math.random() - 0.5) * 3;
+                currentValue += change;
+                data.push(parseFloat(currentValue.toFixed(2)));
+            }
+            
+            const chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'AAPL Price',
+                        data: data,
+                        borderColor: '#2563eb',
+                        backgroundColor: 'rgba(37, 99, 235, 0.15)',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            grid: {
+                                color: 'rgba(148, 163, 184, 0.15)'
+                            },
+                            ticks: {
+                                color: '#64748b'
+                            }
+                        },
+                        y: {
+                            grid: {
+                                color: 'rgba(148, 163, 184, 0.15)'
+                            },
+                            ticks: {
+                                color: '#64748b'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#1f2937'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

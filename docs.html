@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDdata API Docs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap">
+    <style>
+        .brand-font {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            letter-spacing: 0.08em;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <nav class="bg-white/90 backdrop-blur shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="index.html" class="flex items-center py-4 space-x-3">
+                            <span class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+                                <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-8 w-8">
+                                    <path d="M6 54V10h10l16 21L48 10h10v44" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+                                    <path d="M16 54V26l16 19 16-19v28" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+                                    <rect x="18" y="36" width="6" height="18" rx="1" fill="currentColor"/>
+                                    <rect x="28" y="40" width="6" height="14" rx="1" fill="currentColor"/>
+                                    <rect x="38" y="34" width="6" height="20" rx="1" fill="currentColor"/>
+                                </svg>
+                            </span>
+                            <span class="brand-font font-semibold text-xl text-gray-900">MDdata</span>
+                        </a>
+                    </div>
+                    <div class="hidden md:flex items-center space-x-1">
+                        <a href="index.html" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Home</a>
+                        <a href="index.html#news" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">News</a>
+                        <a href="index.html#research" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Research</a>
+                        <a href="index.html#market-data" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Market Data</a>
+                        <a href="index.html#quotes" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Quotes</a>
+                        <a href="index.html#api-section" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">API</a>
+                        <a href="index.html#pricing" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Pricing</a>
+                        <a href="docs.html" class="py-4 px-3 text-blue-600 border-b-2 border-blue-500 font-semibold">Docs</a>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-3">
+                    <a href="login.html" class="py-2 px-4 text-gray-500 hover:text-gray-900 transition duration-300">Login</a>
+                    <a href="register.html" class="py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded transition duration-300">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-4 py-16 space-y-16">
+        <section>
+            <h1 class="text-4xl font-bold text-gray-900">Market Trading Hours API</h1>
+            <p class="mt-4 text-lg text-gray-600">
+                Get standard trading hours, call auction and after-hours information for major markets. The interface follows REST specifications and is compatible with MDdata full authentication process.
+            </p>
+            <div class="mt-8 rounded-3xl bg-blue-50 border border-blue-100 p-6">
+                <p class="text-sm uppercase tracking-widest text-blue-600 font-semibold">Endpoint</p>
+                <p class="mt-2 font-mono text-sm text-gray-800">GET https://api.mddata.cc/v1/market/trading-hours</p>
+                <div class="mt-4 grid gap-4 md:grid-cols-2 text-sm text-gray-700">
+                    <div>
+                        <p class="font-semibold text-gray-900">Headers</p>
+                        <ul class="mt-2 space-y-2">
+                            <li><span class="font-mono text-xs bg-white/60 px-2 py-1 rounded">Authorization: Bearer &lt;token&gt;</span></li>
+                            <li><span class="font-mono text-xs bg-white/60 px-2 py-1 rounded">Accept: application/json</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-900">Query</p>
+                        <ul class="mt-2 space-y-2">
+                            <li><span class="font-mono text-xs bg-white/60 px-2 py-1 rounded">market</span> — Exchange code, such as <code>SSE</code>、<code>HKEX</code></li>
+                            <li><span class="font-mono text-xs bg-white/60 px-2 py-1 rounded">date</span> — Optional, ISO date. Defaults to the latest trading day.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-semibold text-gray-900">Response Example</h2>
+            <p class="mt-3 text-gray-600">
+                Main fields cover commonly used continuous auction, lunch break and after-hours trading information.
+            </p>
+            <pre class="mt-6 bg-gray-900 text-gray-100 rounded-3xl p-6 text-sm overflow-x-auto"><code>{
+  "market": "SSE",
+  "date": "2025-09-23",
+  "timezone": "Asia/Shanghai",
+  "sessions": [
+    {
+      "type": "pre_open",
+      "start": "09:15",
+      "end": "09:25"
+    },
+    {
+      "type": "continuous",
+      "start": "09:30",
+      "end": "11:30"
+    },
+    {
+      "type": "continuous",
+      "start": "13:00",
+      "end": "15:00"
+    }
+  ],
+  "remarks": "Monday to Friday, excluding holidays."
+}</code></pre>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-semibold text-gray-900">Error Codes</h2>
+            <table class="mt-6 w-full text-left text-sm text-gray-700 border border-gray-200 rounded-2xl overflow-hidden">
+                <thead class="bg-gray-100 text-gray-900">
+                    <tr>
+                        <th class="px-4 py-3">Status Code</th>
+                        <th class="px-4 py-3">Description</th>
+                        <th class="px-4 py-3">Solution</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-t border-gray-200">
+                        <td class="px-4 py-3 font-mono">401</td>
+                        <td class="px-4 py-3">Authentication failed or Token expired</td>
+                        <td class="px-4 py-3">Refresh Token or contact administrator to reset key</td>
+                    </tr>
+                    <tr class="border-t border-gray-200">
+                        <td class="px-4 py-3 font-mono">404</td>
+                        <td class="px-4 py-3">Exchange code does not exist</td>
+                        <td class="px-4 py-3">Check if the market parameter complies with MDdata standards</td>
+                    </tr>
+                    <tr class="border-t border-gray-200">
+                        <td class="px-4 py-3 font-mono">429</td>
+                        <td class="px-4 py-3">Request frequency exceeds limit</td>
+                        <td class="px-4 py-3">Reduce call frequency or upgrade plan to get higher quota</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-semibold text-gray-900">Authentication Workflow</h2>
+            <div class="mt-4 space-y-4 text-sm text-gray-700">
+                <p>
+                    Each request uses short-lived access tokens issued by the MDdata identity gateway.
+                    Submit your `client_id`, nonce and HMAC signature to `/v1/auth/token` and rotate the
+                    refresh token every 24 hours. Never embed secrets in client-side applications; use a
+                    vaulted service to proxy requests when building web experiences.
+                </p>
+                <pre class="bg-gray-900 text-gray-100 rounded-3xl p-4 overflow-x-auto"><code>{
+  "clientId": "md_xxxxx",
+  "nonce": "1700000012",
+  "signature": "hex(hmac_sha256(secret, payload))"
+}</code></pre>
+                <p>
+                    Authentication checks include IP allowlists, token expiry, MFA status and scope
+                    validation. Failures return <code>401</code> with an error payload describing the rejected
+                    stage so operations teams can react quickly.
+                </p>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-semibold text-gray-900">Rate Limits & Throughput</h2>
+            <p class="mt-4 text-sm text-gray-700">
+                Default quotas serve 600 REST calls per minute per tenant. WebSocket connections are
+                limited to 5 concurrent channels for sandbox tenants and 20 for production. Submit a
+                request via the MDdata console to raise limits for large-scale backfills or live trading
+                desks.
+            </p>
+            <table class="mt-6 w-full text-left text-sm text-gray-700 border border-gray-200 rounded-2xl overflow-hidden">
+                <thead class="bg-gray-100 text-gray-900">
+                    <tr>
+                        <th class="px-4 py-3">Limit Type</th>
+                        <th class="px-4 py-3">Threshold</th>
+                        <th class="px-4 py-3">Recommended Backoff</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-t border-gray-200">
+                        <td class="px-4 py-3">REST Requests</td>
+                        <td class="px-4 py-3">600 rpm</td>
+                        <td class="px-4 py-3">Exponential backoff starting at 200&nbsp;ms</td>
+                    </tr>
+                    <tr class="border-t border-gray-200">
+                        <td class="px-4 py-3">WebSocket Streams</td>
+                        <td class="px-4 py-3">5 channels (sandbox)</td>
+                        <td class="px-4 py-3">Reconnect with jitter after 3&nbsp;s</td>
+                    </tr>
+                    <tr class="border-t border-gray-200">
+                        <td class="px-4 py-3">Historical Downloads</td>
+                        <td class="px-4 py-3">20&nbsp;GB per hour</td>
+                        <td class="px-4 py-3">Queue jobs via `/v1/jobs` and poll status</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-semibold text-gray-900">WebSocket Streaming Lifecycle</h2>
+            <p class="mt-4 text-sm text-gray-700">
+                Persistent streams deliver order book deltas with microsecond timestamps. Respond to
+                heartbeat frames every 15 seconds to keep connections alive. Upon reconnect, send the
+                last confirmed sequence number so the gateway can replay missed deltas.
+            </p>
+            <pre class="bg-gray-900 text-gray-100 rounded-3xl p-4 overflow-x-auto"><code>{
+  "action": "subscribe",
+  "channel": "quotes",
+  "symbols": ["SSE:600519", "HKEX:00700"],
+  "seq": 1854309
+}</code></pre>
+            <p class="mt-4 text-sm text-gray-700">
+                Messages tagged with <code>event = "snapshot"</code> replace your local order book. Apply
+                <code>event = "delta"</code> updates sequentially, discarding out-of-order frames. The replay buffer
+                persists 2 hours of data for seamless gap recovery.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-semibold text-gray-900">SDK Integration Tips</h2>
+            <ul class="mt-4 space-y-3 text-sm text-gray-700 list-disc list-inside">
+                <li>Use the official Python SDK batching helpers to aggregate symbols into one request.</li>
+                <li>Enable HTTP/2 in the TypeScript client to reduce TLS negotiation during bursts.</li>
+                <li>Configure Go client pools with connection reuse to sustain 10k rpm workloads.</li>
+                <li>Leverage Java interceptors to refresh tokens 2 minutes before expiry.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="text-2xl font-semibold text-gray-900">Compliance & Audit Logging</h2>
+            <p class="mt-4 text-sm text-gray-700">
+                MDdata retains signed access logs for 365 days. Enterprise tenants can schedule daily
+                exports to encrypted object storage. Enable field-level masking to keep PII hidden in
+                payloads and filter the audit API by user, IP address or endpoint when preparing
+                regulatory reports.
+            </p>
+        </section>
+
+        <section id="quick-start" class="bg-blue-50 border border-blue-100 rounded-3xl p-8">
+            <h2 class="text-2xl font-semibold text-gray-900">Quick Start</h2>
+            <ol class="mt-4 space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li>Submit a sandbox application through the <a href="login.html" class="text-blue-600 hover:text-blue-700">MDdata Console</a>.</li>
+                <li>Create service credentials and exchange them for an access token via `/v1/auth/token`.</li>
+                <li>Call `/v1/market/trading-hours` with your desired `market` and optional `date` parameter.</li>
+                <li>Sync returned sessions into your trading calendar or risk control pipeline.</li>
+            </ol>
+        </section>
+
+        <footer class="border-t border-gray-100 bg-white">
+            <div class="max-w-5xl mx-auto px-4 py-8 text-sm text-gray-500 flex flex-col md:flex-row md:items-center md:justify-between">
+                <p>&copy; 2024 MDdata. Documentation.</p>
+                <a href="login.html" class="text-blue-600 hover:text-blue-700">MDdata Console</a>
+            </div>
+        </footer>
+    </body>
+</html>
