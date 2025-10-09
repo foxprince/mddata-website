@@ -291,8 +291,38 @@ class RealDataFetcher {
         
         try {
             // 使用 Binance REST API 获取 24h ticker
-            const symbols = this.cryptoSymbols.map(c => c.binanceSymbol).join(',');
-            const url = `https://api.binance.com/api/v3/ticker/24hr`;
+            // 注意：如果遇到 CORS 问题，可以逐个请求或使用代理
+            const promises = this.cryptoSymbols.map(crypto => 
+                this.fetchSingleCryptoQuote(crypto)
+            );
+            
+            const results = await Promise.allSettled(promises);
+            const cryptoData = results
+                .filter(result => result.status === 'fulfilled')
+                .map(result => result.value);
+            
+            if (cryptoData.length > 0) {
+                this.updateCache('crypto', cryptoData);
+                return cryptoData;
+            }
+            
+            throw new Error('无法获取加密货币数据');
+        } catch (error) {
+            console.error('获取加密货币数据错误:', error);
+            if (this.config.useFallback) {
+                console.warn('使用模拟加密货币数据');
+                return this.getFallbackCryptoData();
+            }
+            throw error;
+        }
+    }
+    
+    /**
+     * 获取单个加密货币报价
+     */
+    async fetchSingleCryptoQuote(crypto) {
+        try {
+            const url = `https://api.binance.com/api/v3/ticker/24hr?symbol=${crypto.binanceSymbol.toUpperCase()}`;
             
             const response = await fetch(url);
             
@@ -300,41 +330,23 @@ class RealDataFetcher {
                 throw new Error(`HTTP ${response.status}`);
             }
             
-            const allData = await response.json();
+            const ticker = await response.json();
             
-            // 过滤我们需要的交易对
-            const cryptoData = this.cryptoSymbols.map(crypto => {
-                const ticker = allData.find(t => 
-                    t.symbol.toLowerCase() === crypto.binanceSymbol.toLowerCase()
-                );
-                
-                if (!ticker) {
-                    throw new Error(`${crypto.symbol} 数据未找到`);
-                }
-                
-                return {
-                    symbol: crypto.symbol,
-                    name: crypto.name,
-                    price: parseFloat(ticker.lastPrice),
-                    change: parseFloat(ticker.priceChange),
-                    changePercent: parseFloat(ticker.priceChangePercent),
-                    volume: parseFloat(ticker.volume),
-                    marketCap: parseFloat(ticker.quoteVolume),
-                    high: parseFloat(ticker.highPrice),
-                    low: parseFloat(ticker.lowPrice),
-                    timestamp: new Date(ticker.closeTime).toISOString()
-                };
-            });
-            
-            this.updateCache('crypto', cryptoData);
-            return cryptoData;
+            return {
+                symbol: crypto.symbol,
+                name: crypto.name,
+                price: parseFloat(ticker.lastPrice),
+                change: parseFloat(ticker.priceChange),
+                changePercent: parseFloat(ticker.priceChangePercent),
+                volume: parseFloat(ticker.volume),
+                marketCap: parseFloat(ticker.quoteVolume),
+                high: parseFloat(ticker.highPrice),
+                low: parseFloat(ticker.lowPrice),
+                timestamp: new Date(ticker.closeTime).toISOString()
+            };
             
         } catch (error) {
-            console.error('获取加密货币数据错误:', error);
-            if (this.config.useFallback) {
-                console.warn('使用模拟加密货币数据');
-                return this.getFallbackCryptoData();
-            }
+            console.error(`获取 ${crypto.symbol} 数据失败:`, error.message);
             throw error;
         }
     }
