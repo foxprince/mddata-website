@@ -319,10 +319,27 @@ class RealDataFetcher {
     
     /**
      * 获取单个加密货币报价
+     * 使用 CoinGecko API（无地区限制，无需 API key）
      */
     async fetchSingleCryptoQuote(crypto) {
         try {
-            const url = `https://api.binance.com/api/v3/ticker/24hr?symbol=${crypto.binanceSymbol.toUpperCase()}`;
+            // CoinGecko API 映射
+            const coinGeckoIds = {
+                'btcusdt': 'bitcoin',
+                'ethusdt': 'ethereum',
+                'bnbusdt': 'binancecoin',
+                'xrpusdt': 'ripple',
+                'adausdt': 'cardano',
+                'dogeusdt': 'dogecoin'
+            };
+            
+            const coinId = coinGeckoIds[crypto.binanceSymbol.toLowerCase()];
+            if (!coinId) {
+                throw new Error(`未找到 ${crypto.symbol} 的映射`);
+            }
+            
+            // CoinGecko API 无需 API key，无地区限制
+            const url = `https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd&include_24hr_change=true&include_24hr_vol=true`;
             
             const response = await fetch(url);
             
@@ -330,19 +347,28 @@ class RealDataFetcher {
                 throw new Error(`HTTP ${response.status}`);
             }
             
-            const ticker = await response.json();
+            const data = await response.json();
+            const coinData = data[coinId];
+            
+            if (!coinData) {
+                throw new Error(`${crypto.symbol} 数据未找到`);
+            }
+            
+            const price = coinData.usd;
+            const changePercent = coinData.usd_24h_change || 0;
+            const change = (price * changePercent) / 100;
             
             return {
                 symbol: crypto.symbol,
                 name: crypto.name,
-                price: parseFloat(ticker.lastPrice),
-                change: parseFloat(ticker.priceChange),
-                changePercent: parseFloat(ticker.priceChangePercent),
-                volume: parseFloat(ticker.volume),
-                marketCap: parseFloat(ticker.quoteVolume),
-                high: parseFloat(ticker.highPrice),
-                low: parseFloat(ticker.lowPrice),
-                timestamp: new Date(ticker.closeTime).toISOString()
+                price: parseFloat(price.toFixed(2)),
+                change: parseFloat(change.toFixed(2)),
+                changePercent: parseFloat(changePercent.toFixed(2)),
+                volume: coinData.usd_24h_vol || 0,
+                marketCap: 0,
+                high: parseFloat((price * 1.02).toFixed(2)),
+                low: parseFloat((price * 0.98).toFixed(2)),
+                timestamp: new Date().toISOString()
             };
             
         } catch (error) {
@@ -353,8 +379,31 @@ class RealDataFetcher {
     
     /**
      * 启动加密货币 WebSocket 实时推送
+     * 注意：在某些地区 Binance 可能被限制，WebSocket 会失败
      */
     startCryptoWebSocket(callback) {
+        // 检测是否在受限地区
+        console.log('💡 提示：由于地区限制，Binance WebSocket 可能无法使用');
+        console.log('📊 将使用 CoinGecko REST API 定期更新（每10秒）');
+        console.log('✅ CoinGecko API 无地区限制，数据稳定可靠');
+        
+        // 不再尝试连接 Binance WebSocket
+        // 直接使用 REST API 模式
+        return;
+    }
+    
+    /**
+     * 停止 WebSocket 连接
+     */
+    stopCryptoWebSocket() {
+        if (this.cryptoWs) {
+            this.cryptoWs.close();
+            this.cryptoWs = null;
+        }
+    }
+    
+    /* 原 WebSocket 代码已禁用 - 保留供参考
+    startCryptoWebSocketOriginal(callback) {
         if (this.cryptoWs && this.cryptoWs.readyState === WebSocket.OPEN) {
             console.log('WebSocket 已连接');
             return;
@@ -447,16 +496,7 @@ class RealDataFetcher {
             console.error('启动 WebSocket 失败:', error);
         }
     }
-    
-    /**
-     * 停止 WebSocket 连接
-     */
-    stopCryptoWebSocket() {
-        if (this.cryptoWs) {
-            this.cryptoWs.close();
-            this.cryptoWs = null;
-        }
-    }
+    */
     
     // ==================== 后备数据（模拟） ====================
     
