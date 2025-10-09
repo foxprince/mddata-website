@@ -37,6 +37,9 @@
                     </div>
                     <div class="hidden md:flex items-center space-x-1">
                         <a href="index.html" class="py-4 px-3 text-blue-600 border-b-2 border-blue-500 font-semibold">Home</a>
+                        <a href="live-data.html" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">
+                            <i class="fas fa-chart-line mr-1"></i>Live Data
+                        </a>
                         <a href="#news" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">News</a>
                         <a href="#research" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Research</a>
                         <a href="#market-data" class="py-4 px-3 text-gray-500 hover:text-gray-900 transition duration-300">Market Data</a>
@@ -94,26 +97,12 @@
                             The dashboard highlights percentage change, turnover, and volume so quant and high-frequency teams can react instantly.
                         </p>
                     </div>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div id="market-snapshot-container" class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <!-- Real-time market data will be inserted here -->
                         <div class="rounded-2xl border border-gray-100 bg-blue-50 px-4 py-5">
-                            <p class="text-sm font-medium text-blue-600">SSE Composite</p>
-                            <p class="mt-2 text-2xl font-semibold text-gray-900">3,124.87</p>
-                            <p class="mt-1 text-sm font-semibold text-green-600">+1.24% · Turnover $456.0B</p>
-                        </div>
-                        <div class="rounded-2xl border border-gray-100 bg-blue-50 px-4 py-5">
-                            <p class="text-sm font-medium text-blue-600">ChiNext Index</p>
-                            <p class="mt-2 text-2xl font-semibold text-gray-900">2,146.32</p>
-                            <p class="mt-1 text-sm font-semibold text-red-500">-0.56% · Turnover $321.0B</p>
-                        </div>
-                        <div class="rounded-2xl border border-gray-100 bg-blue-50 px-4 py-5">
-                            <p class="text-sm font-medium text-blue-600">Hang Seng Index</p>
-                            <p class="mt-2 text-2xl font-semibold text-gray-900">19,865.40</p>
-                            <p class="mt-1 text-sm font-semibold text-green-600">+0.78% · Turnover $589.0B</p>
-                        </div>
-                        <div class="rounded-2xl border border-gray-100 bg-blue-50 px-4 py-5">
-                            <p class="text-sm font-medium text-blue-600">COMEX Gold</p>
-                            <p class="mt-2 text-2xl font-semibold text-gray-900">2,361.75</p>
-                            <p class="mt-1 text-sm font-semibold text-green-600">+0.42% · Turnover $10.4B</p>
+                            <p class="text-sm font-medium text-blue-600">Loading...</p>
+                            <p class="mt-2 text-2xl font-semibold text-gray-900">--</p>
+                            <p class="mt-1 text-sm font-semibold text-gray-400">Fetching data...</p>
                         </div>
                     </div>
                 </div>
@@ -669,11 +658,14 @@ print(payload['price'], payload['turnover'])</code></pre>
         </div>
     </footer>
 
+    <!-- 数据获取模块 -->
     <script src="js/data-simulation.js"></script>
+    <script src="js/real-data-fetcher.js"></script>
     <script src="js/ui-update.js"></script>
     <script>
         // Initialize the simulation when the page loads
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 MDdata 市场数据平台启动中...');
             initializeSimulation();
         });
     </script>
